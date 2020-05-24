@@ -4,16 +4,34 @@ class Gitea < Formula
   homepage "https://github.com/go-gitea/gitea"
   head "https://github.com/go-gitea/gitea.git"
 
+  def self.bin_filename(version)
+    os = OS.mac? ? "darwin-10.6" : "linux"
+
+    arch = case Hardware::CPU.arch
+    when :i386 then "386"
+    when :x86_64 then "amd64"
+    when :arm64 then "arm64"
+    else
+      raise "Gitea: Unsupported system architecture #{Hardware::CPU.arch}"
+    end
+
+    "gitea-#{version}-#{os}-#{arch}"
+  end
+
+  def self.bin_url(version)
+    "https://dl.gitea.io/gitea/#{version}/#{bin_filename(version)}"
+  end
+
   stable do
     version "1.11.5"
-    url "https://dl.gitea.io/gitea/#{version}/gitea-#{version}-darwin-10.6-amd64"
-    sha256 `curl -s https://dl.gitea.io/gitea/#{version}/gitea-#{version}-darwin-10.6-amd64.sha256`.split(" ").first
+    url Gitea.bin_url(version)
+    sha256 `curl -s #{url}.sha256`.split(" ").first
   end
 
   devel do
-    url "https://dl.gitea.io/gitea/master/gitea-master-darwin-10.6-amd64"
-    sha256 `curl -s https://dl.gitea.io/gitea/master/gitea-master-darwin-10.6-amd64.sha256`.split(" ").first
     version "master"
+    url Gitea.bin_url(version)
+    sha256 `curl -s #{url}.sha256`.split(" ").first
   end
 
   head do
@@ -41,7 +59,7 @@ class Gitea < Formula
 
       bin.install "#{buildpath}/gitea" => "gitea"
     else
-      bin.install "#{buildpath}/gitea-#{version}-darwin-10.6-amd64" => "gitea"
+      bin.install "#{buildpath}/#{Gitea.bin_filename(version)}" => "gitea"
     end
   end
 end
