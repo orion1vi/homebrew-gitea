@@ -1,8 +1,5 @@
-require "formula"
-
 class Gitea < Formula
   homepage "https://github.com/go-gitea/gitea"
-  head "https://github.com/go-gitea/gitea.git"
 
   def self.bin_filename(version)
     os = OS.mac? ? "darwin-10.6" : "linux"
@@ -39,13 +36,8 @@ class Gitea < Formula
     depends_on "go" => :build
   end
 
-  test do
-    system "#{bin}/gitea", "--version"
-  end
-
   def install
-    case
-    when build.head?
+    if build.head?
       mkdir_p buildpath/File.join("src", "code.gitea.io")
       ln_s buildpath, buildpath/File.join("src", "code.gitea.io", "gitea")
 
@@ -61,5 +53,9 @@ class Gitea < Formula
     else
       bin.install "#{buildpath}/#{Gitea.bin_filename(version)}" => "gitea"
     end
+  end
+
+  test do
+    system "#{bin}/gitea", "--version"
   end
 end
