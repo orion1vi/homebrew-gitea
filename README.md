@@ -2,7 +2,7 @@
 
 [![Join the chat at https://img.shields.io/discord/322538954119184384.svg](https://img.shields.io/discord/322538954119184384.svg)](https://discord.gg/NsatcWJ)
 
-Homebrew repository to install Gitea on macOS.
+Homebrew repository to install Gitea and tools on macOS.
 
 ## Prepare
 
@@ -19,6 +19,20 @@ brew install gitea
 gitea -h
 ```
 
+### tea
+
+```bash
+brew install tea
+tea -h
+```
+
+### changelog
+
+```bash
+brew install changelog
+changelog -h
+```
+
 ## Upgrade
 
 In case you installed Gitea before v1.8.3, you still might have the old tap. In that case, you need to remove it and add the new tap via
@@ -31,7 +45,7 @@ brew tap gitea/tap https://gitea.com/gitea/homebrew-gitea
 Once you updated the tap, you can upgrade via
 
 ```bash
-brew update && brew upgrade gitea
+brew update && brew upgrade gitea tea changelog
 ```
 
 ## Uninstall
@@ -39,12 +53,10 @@ brew update && brew upgrade gitea
 You can uninstall Gitea with
 
 ```bash
-brew uninstall gitea
+brew uninstall gitea tea changelog
 ```
 
 Note that this will only uninstall the gitea binary. Your repositories, configuration, database, logs etc. are still kept in their locations (to check which folders Gitea is using, see `Site administration` -> `Configuration`).
-
-
 
 ## Contributing
 
