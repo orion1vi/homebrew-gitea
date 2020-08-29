@@ -25,7 +25,7 @@ class Gitea < Formula
     sha256 `curl -s #{url}.sha256`.split(" ").first
   end
 
-  devel do
+  head do
     version "master"
     url Gitea.bin_url(version)
     sha256 `curl -s #{url}.sha256`.split(" ").first

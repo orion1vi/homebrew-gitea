@@ -10,7 +10,7 @@ class Changelog < Formula
     sha256 `curl -s https://dl.gitea.io/changelog-tool/#{version}/changelog-#{version}-darwin-10.6-amd64.sha256`.split(" ").first
   end
 
-  devel do
+  head do
     url "https://dl.gitea.io/changelog-tool/master/changelog-master-darwin-10.6-amd64"
     sha256 `curl -s https://dl.gitea.io/changelog-tool/master/changelog-master-darwin-10.6-amd64.sha256`.split(" ").first
     version "master"
