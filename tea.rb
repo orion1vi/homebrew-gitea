@@ -5,15 +5,15 @@ class Tea < Formula
   head "https://gitea.com/gitea/tea.git"
 
   stable do
-    version "0.5.0"
-    url "https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-10.6-amd64"
-    sha256 `curl -s https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-10.6-amd64.sha256`.split(" ").first
+    version "0.6.0"
+    url "https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-amd64"
+    sha256 `curl -s https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-amd64.sha256`.split(" ").first
   end
 
   head do
-    url "https://dl.gitea.io/tea/master/tea-master-darwin-10.6-amd64"
-    sha256 `curl -s https://dl.gitea.io/tea/master/tea-master-darwin-10.6-amd64.sha256`.split(" ").first
     version "master"
+    url "https://dl.gitea.io/tea/master/tea-master-darwin-amd64"
+    sha256 `curl -s https://dl.gitea.io/tea/master/tea-master-darwin-amd64.sha256`.split(" ").first
   end
 
   head do
@@ -40,7 +40,7 @@ class Tea < Formula
 
       bin.install "#{buildpath}/tea" => "tea"
     else
-      bin.install "#{buildpath}/tea-#{version}-darwin-10.6-amd64" => "tea"
+      bin.install "#{buildpath}/tea-#{version}-darwin-amd64" => "tea"
     end
   end
 end
