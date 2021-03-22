@@ -2,7 +2,7 @@ class Gitea < Formula
   homepage "https://github.com/go-gitea/gitea"
 
   def self.bin_filename(version)
-    os = OS.mac? ? "darwin-10.6" : "linux"
+    os = OS.mac? ? "darwin-10.12" : "linux"
 
     arch = case Hardware::CPU.arch
     when :i386 then "386"
