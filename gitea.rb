@@ -20,7 +20,7 @@ class Gitea < Formula
   end
 
   stable do
-    version "1.13.5"
+    version "1.13.6"
     url Gitea.bin_url(version)
     sha256 `curl -s #{url}.sha256`.split(" ").first
   end
