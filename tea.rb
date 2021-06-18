@@ -7,13 +7,13 @@ class Tea < Formula
   stable do
     version "0.7.0"
     url "https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-amd64"
-    sha256 `curl -s https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-amd64.sha256`.split(" ").first
+    sha256 `curl -sL https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-amd64.sha256`.split(" ").first
   end
 
   head do
     version "master"
     url "https://dl.gitea.io/tea/master/tea-master-darwin-amd64"
-    sha256 `curl -s https://dl.gitea.io/tea/master/tea-master-darwin-amd64.sha256`.split(" ").first
+    sha256 `curl -sL https://dl.gitea.io/tea/master/tea-master-darwin-amd64.sha256`.split(" ").first
   end
 
   head do
