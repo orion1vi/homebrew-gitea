@@ -20,19 +20,19 @@ class Gitea < Formula
   end
 
   stable do
-    version "1.14.2"
+    version "1.14.3"
     url Gitea.bin_url(version)
     sha256 `curl -sL #{url}.sha256`.split(" ").first
   end
 
   head do
-    version "master"
+    version "main"
     url Gitea.bin_url(version)
     sha256 `curl -sL #{url}.sha256`.split(" ").first
   end
 
   head do
-    url "https://github.com/go-gitea/gitea.git", :branch => "master"
+    url "https://github.com/go-gitea/gitea.git", :branch => "main"
     depends_on "go" => :build
   end
 
