@@ -4,16 +4,33 @@ class Tea < Formula
   homepage "https://gitea.com/gitea/tea"
   head "https://gitea.com/gitea/tea.git"
 
+  def self.bin_filename(version)
+    os = OS.mac? ? "darwin" : "linux"
+
+    arch = case Hardware::CPU.arch
+    when :x86_64 then "amd64"
+    when :arm64 then "arm64"
+    else
+      raise "tea: Unsupported system architecture #{Hardware::CPU.arch}"
+    end
+
+    "tea-#{version}-#{os}-#{arch}"
+  end
+
+  def self.bin_url(version)
+    "https://dl.gitea.io/tea/#{version}/#{bin_filename(version)}"
+  end
+
   stable do
     version "0.7.0"
-    url "https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-amd64"
-    sha256 `curl -sL https://dl.gitea.io/tea/#{version}/tea-#{version}-darwin-amd64.sha256`.split(" ").first
+    url Tea.bin_url(version)
+    sha256 `curl -sL ${url}.sha256`.split(" ").first
   end
 
   head do
     version "master"
-    url "https://dl.gitea.io/tea/master/tea-master-darwin-amd64"
-    sha256 `curl -sL https://dl.gitea.io/tea/master/tea-master-darwin-amd64.sha256`.split(" ").first
+    url Tea.bin_url(version)
+    sha256 `curl -sL ${url}.sha256`.split(" ").first
   end
 
   head do
@@ -40,7 +57,7 @@ class Tea < Formula
 
       bin.install "#{buildpath}/tea" => "tea"
     else
-      bin.install "#{buildpath}/tea-#{version}-darwin-amd64" => "tea"
+      bin.install "#{buildpath}/#{Tea.bin_filename(version)}" => "tea"
     end
   end
 end
