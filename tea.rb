@@ -34,7 +34,7 @@ class Tea < Formula
   end
 
   head do
-    url "https://github.com/go-gitea/tea.git", :branch => "master"
+    url "https://gitea.com/gitea/tea.git", :branch => "master"
     depends_on "go" => :build
   end
 
