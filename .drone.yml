@@ -1,0 +1,65 @@
+---
+kind: pipeline
+name: testing-amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+trigger:
+  event:
+    - push
+    - pull_request
+
+steps:
+  - name: test-versioned-formulae
+    image: homebrew/brew:latest
+    environment:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    commands:
+      - brew tap gitea/gitea "$${PWD}"
+      - brew install gitea/gitea/tea && tea --version
+      - brew install gitea/gitea/gitea && gitea --version
+
+  - name: test-head-formulae
+    image: homebrew/brew:latest
+    environment:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    commands:
+      - brew tap gitea/gitea "$${PWD}"
+      - brew install gitea/gitea/tea-head && tea --version
+      - brew install gitea/gitea/changelog && changelog --version
+      - brew install gitea/gitea/gitea-head && gitea --version
+
+---
+kind: pipeline
+name: testing-arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+trigger:
+  event:
+    - push
+    - pull_request
+
+steps:
+  - name: test-versioned-formulae
+    image: markkrj/homebrew-arm:latest
+    environment:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    commands:
+      - brew tap gitea/gitea "$${PWD}"
+      - brew install gitea/gitea/tea && tea --version
+      - brew install gitea/gitea/gitea && gitea --version
+
+  - name: test-head-formulae
+    image: markkrj/homebrew-arm:latest
+    environment:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    commands:
+      - brew tap gitea/gitea "$${PWD}"
+      - brew install gitea/gitea/tea-head && tea --version
+      - brew install gitea/gitea/changelog && changelog --version
+      - brew install gitea/gitea/gitea-head && gitea --version
