@@ -1,7 +1,7 @@
 class TeaHead < Formula
   desc "A command line tool to interact with Gitea servers"
   homepage "https://gitea.com/gitea/tea"
-  version "0.7.0"
+  version "master"
 
   os = OS.mac? ? "darwin" : "linux"
   arch = case Hardware::CPU.arch
