@@ -6,7 +6,7 @@ for bin in ${binaries};do
 	case "$bin" in
 		tea)
 			git_url="https://gitea.com/gitea/tea"
-			supported_os="linux-386 linux-amd64 linux-arm64 darwin-amd64";;
+			supported_os="linux-386 linux-amd64 linux-arm64 darwin-amd64 darwin-arm64";;
 		gitea)
 			git_url="https://github.com/go-gitea/gitea"
 			supported_os="linux-386 linux-amd64 linux-arm64 darwin-10.12-amd64 darwin-10.12-arm64";;
