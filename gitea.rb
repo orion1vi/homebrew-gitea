@@ -1,7 +1,7 @@
 class Gitea < Formula
   desc "Git with a cup of tea, painless self-hosted git service"
   homepage "https://gitea.io"
-  version "1.15.2"
+  version "1.15.3"
 
   os = OS.mac? ? "darwin-10.12" : "linux"
   arch = case Hardware::CPU.arch
@@ -15,11 +15,11 @@ class Gitea < Formula
   @@filename = "gitea-#{version}-#{os}-#{arch}"
   @@url = "https://dl.gitea.io/gitea/#{version}/#{@@filename}.xz"
   @@sha256 = case "#{os}-#{arch}"
-             when "linux-386" then "aaf6d9edd62ac1da7b45aede00878aef92b7b9b2a9f732204a9270c734ee6229"
-             when "linux-amd64" then "da8a29ae062842fd68a3806ad73c5bafde5db37a66121fb23dd4a9136e72dec4"
-             when "linux-arm64" then "d64bd26470598734a1e15a725ebf0c0f061291c631001e2debf0c755815e5959"
-             when "darwin-10.12-amd64" then "c41943f7e11af23ed13b3e7830156a708bfe4ca0a24ce328660aa9cb81425cc1"
-             when "darwin-10.12-arm64" then "cc17aae24089959c9ccd095e58bca5a3988d6af5fcf822e488af7cb74da98301"
+             when "linux-386" then "98d1fde4d9085ca9fec04ac491e17a4b371e8f7b8de631770944715a0e911616"
+             when "linux-amd64" then "c9ba0e981ef46245bfe13a074e8fb9410981909dcd3abb471345a7b9ceabd574"
+             when "linux-arm64" then "e865b914eb84dde8bd64a86a60066ad5c61bba3a2a15e4b03ec6048efd0b45d6"
+             when "darwin-10.12-amd64" then "ba67f009856da4ddba29e65b8adbf7be0c2d8de39d70572641342b9e7532c93e"
+             when "darwin-10.12-arm64" then "367e2e1b98828e26910cb1701845a6fba4183954337107a0967a08f551986e33"
              else
                raise "gitea: Unsupported system #{os}-#{arch}"
              end
