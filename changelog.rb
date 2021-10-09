@@ -3,7 +3,7 @@ class Changelog < Formula
   homepage "https://gitea.com/gitea/changelog"
   version "master"
 
-  os = OS.mac? ? "darwin-10.6" : "linux"
+  os = OS.mac? ? "darwin-10.12" : "linux"
   arch = case Hardware::CPU.arch
          when :i386 then "386"
          when :x86_64 then "amd64"
@@ -13,15 +13,28 @@ class Changelog < Formula
          end
 
   @@filename = "changelog-#{version}-#{os}-#{arch}"
-  @@url = "https://dl.gitea.io/changelog-tool/#{version}/#{@@filename}.xz"
+  @@url = "https://dl.gitea.io/changelog-tool/#{version}/#{@@filename}"
+  @@using = :nounzip
+
+  if os == "darwin-10.12" || arch == "amd64"
+    @@url += ".xz"
+    @@using = nil
+    depends_on "xz"
+  end
+
   @@sha256 = %x[ curl -sL #{@@url}.sha256 ].split.first
 
-  url @@url
   sha256 @@sha256
+  url @@url,
+      using: @@using
 
   bottle :unneeded
   def install
-    filename = Changelog.class_variable_get("@@filename")
+    if stable.using.blank?
+      filename = Changelog.class_variable_get("@@filename")
+    else
+      filename =  downloader.cached_location
+    end
     bin.install filename => "changelog"
   end
 

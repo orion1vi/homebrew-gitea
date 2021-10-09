@@ -5,6 +5,7 @@ class TeaHead < Formula
 
   os = OS.mac? ? "darwin" : "linux"
   arch = case Hardware::CPU.arch
+         when :i386 then "386"
          when :x86_64 then "amd64"
          when :arm64 then "arm64"
          else
@@ -12,16 +13,29 @@ class TeaHead < Formula
          end
 
   @@filename = "tea-#{version}-#{os}-#{arch}"
-  @@url = "https://dl.gitea.io/tea/#{version}/#{@@filename}.xz"
+  @@url = "https://dl.gitea.io/tea/#{version}/#{@@filename}"
+  @@using = :nounzip
+
+  if os == "darwin" || arch == "amd64"
+    @@url += ".xz"
+    @@using = nil
+    depends_on "xz"
+  end
+
   @@sha256 = %x[ curl -sL #{@@url}.sha256 ].split.first
 
-  url @@url
   sha256 @@sha256
+  url @@url,
+      using: @@using
 
   conflicts_with "tea", because: "both install tea binaries"
   bottle :unneeded
   def install
-    filename = TeaHead.class_variable_get("@@filename")
+    if stable.using.blank?
+      filename = TeaHead.class_variable_get("@@filename")
+    else
+      filename =  downloader.cached_location
+    end  
     bin.install filename => "tea"
   end
 

@@ -13,16 +13,29 @@ class GiteaHead < Formula
          end
 
   @@filename = "gitea-#{version}-#{os}-#{arch}"
-  @@url = "https://dl.gitea.io/gitea/#{version}/#{@@filename}.xz"
+  @@url = "https://dl.gitea.io/gitea/#{version}/#{@@filename}"
+  @@using = :nounzip
+
+  if os == "darwin-10.12" || arch == "amd64"
+    @@url += ".xz"
+    @@using = nil
+    depends_on "xz"
+  end
+
   @@sha256 = %x[ curl -sL #{@@url}.sha256 ].split.first
 
-  url @@url
   sha256 @@sha256
+  url @@url,
+      using: @@using
 
   conflicts_with "gitea", because: "both install gitea binaries"
   bottle :unneeded
   def install
-    filename = GiteaHead.class_variable_get("@@filename")
+    if stable.using.blank?
+      filename = GiteaHead.class_variable_get("@@filename")
+    else
+      filename =  downloader.cached_location
+    end
     bin.install filename => "gitea"
   end
 
