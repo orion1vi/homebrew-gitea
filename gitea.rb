@@ -1,7 +1,7 @@
 class Gitea < Formula
   desc "Git with a cup of tea, painless self-hosted git service"
   homepage "https://gitea.io"
-  version "1.15.3"
+  version "1.15.4"
 
   os = OS.mac? ? "darwin-10.12" : "linux"
   arch = case Hardware::CPU.arch
@@ -23,11 +23,11 @@ class Gitea < Formula
   end
 
   @@sha256 = case "#{os}-#{arch}"
-             when "linux-386" then "acbdeee908fa7f2be7dd2dd46123f82101875f7c48b1de15e67215a906f720d8"   # binary
-             when "linux-amd64" then "c9ba0e981ef46245bfe13a074e8fb9410981909dcd3abb471345a7b9ceabd574"
-             when "linux-arm64" then "0383a074b6a2b2d3db7940f6359df89e9bfe90b5d526e9dd80243b5cb8b9f857" # binary
-             when "darwin-10.12-amd64" then "ba67f009856da4ddba29e65b8adbf7be0c2d8de39d70572641342b9e7532c93e"
-             when "darwin-10.12-arm64" then "367e2e1b98828e26910cb1701845a6fba4183954337107a0967a08f551986e33"
+             when "linux-386" then "cb8d0d82ebea546d4f6db1aa80f62d5a382c9b1c3116278dff41e462352a0e5c"   # binary
+             when "linux-amd64" then "d44dc105a0d8dedf051e36b0eef7c94b56e0c478a78c3575ab1cacf2f4cf77c1"
+             when "linux-arm64" then "a40c22504507915d3acccc146052415b1ece5c86db2facf34d78fc887128515f" # binary
+             when "darwin-10.12-amd64" then "c2208e84a73536a881372ee301dc5872015af51dd9a31039b495010a656b5fca"
+             when "darwin-10.12-arm64" then "3efd6e61bb45c1fb9da0c5ecf84f05c15fd8a94caf2db2aefa5962a3270d49d7"
              else
                raise "gitea: Unsupported system #{os}-#{arch}"
              end

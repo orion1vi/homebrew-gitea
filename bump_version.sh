@@ -25,7 +25,7 @@ for bin in ${binaries};do
 		fi
 		sha256_file="${sha256_file}.sha256"
 		sha256=$(curl -sL "${file_url}/${sha256_file}" | awk '{print$1}')
-		sed -r "s/^(\s+when \"${os}\" then).*/\1 \"${sha256}\"/" -i "${file}"
+		sed -r "s/^(\s+when \"${os}\" then).*\"(.*)$/\1 \"${sha256}\"\2/" -i "${file}"
 	done
 	sed -r "s/^(\s+version).*/\1 \"${version}\"/" -i "${file}"
 done
