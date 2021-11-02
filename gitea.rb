@@ -37,7 +37,6 @@ class Gitea < Formula
       using: @@using
 
   conflicts_with "gitea-head", because: "both install gitea binaries"
-  bottle :unneeded
   def install
     if stable.using.blank?
       filename = Gitea.class_variable_get("@@filename")
