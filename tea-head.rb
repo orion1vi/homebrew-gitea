@@ -1,3 +1,5 @@
+require './utils/macos_codesign.rb'
+
 class TeaHead < Formula
   desc "A command line tool to interact with Gitea servers"
   homepage "https://gitea.com/gitea/tea"
@@ -29,13 +31,13 @@ class TeaHead < Formula
       using: @@using
 
   conflicts_with "tea", because: "both install tea binaries"
-  bottle :unneeded
   def install
     if stable.using.blank?
       filename = TeaHead.class_variable_get("@@filename")
     else
       filename =  downloader.cached_location
-    end  
+    end
+    apply_ad_hoc_signature(filename)
     bin.install filename => "tea"
   end
 

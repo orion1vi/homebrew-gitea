@@ -1,3 +1,5 @@
+require './utils/macos_codesign.rb'
+
 class Gitea < Formula
   desc "Git with a cup of tea, painless self-hosted git service"
   homepage "https://gitea.io"
@@ -43,6 +45,7 @@ class Gitea < Formula
     else
       filename =  downloader.cached_location
     end
+    apply_ad_hoc_signature(filename)
     bin.install filename => "gitea"
   end
 

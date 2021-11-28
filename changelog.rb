@@ -1,3 +1,5 @@
+require './utils/macos_codesign.rb'
+
 class Changelog < Formula
   desc "Generate changelog of gitea repository"
   homepage "https://gitea.com/gitea/changelog"
@@ -28,13 +30,13 @@ class Changelog < Formula
   url @@url,
       using: @@using
 
-  bottle :unneeded
   def install
     if stable.using.blank?
       filename = Changelog.class_variable_get("@@filename")
     else
       filename =  downloader.cached_location
     end
+    apply_ad_hoc_signature(filename)
     bin.install filename => "changelog"
   end
 

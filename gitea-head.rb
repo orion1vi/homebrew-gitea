@@ -1,3 +1,5 @@
+require './utils/macos_codesign.rb'
+
 class GiteaHead < Formula
   desc "Git with a cup of tea, painless self-hosted git service"
   homepage "https://gitea.io"
@@ -29,13 +31,13 @@ class GiteaHead < Formula
       using: @@using
 
   conflicts_with "gitea", because: "both install gitea binaries"
-  bottle :unneeded
   def install
     if stable.using.blank?
       filename = GiteaHead.class_variable_get("@@filename")
     else
       filename =  downloader.cached_location
     end
+    apply_ad_hoc_signature(filename)
     bin.install filename => "gitea"
   end
 
