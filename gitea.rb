@@ -1,4 +1,4 @@
-require './utils/macos_codesign.rb'
+require_relative './utils/macos_codesign.rb'
 
 class Gitea < Formula
   desc "Git with a cup of tea, painless self-hosted git service"

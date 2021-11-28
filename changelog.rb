@@ -1,4 +1,4 @@
-require './utils/macos_codesign.rb'
+require_relative './utils/macos_codesign.rb'
 
 class Changelog < Formula
   desc "Generate changelog of gitea repository"

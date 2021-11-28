@@ -1,4 +1,4 @@
-require './utils/macos_codesign.rb'
+require_relative './utils/macos_codesign.rb'
 
 class TeaHead < Formula
   desc "A command line tool to interact with Gitea servers"
