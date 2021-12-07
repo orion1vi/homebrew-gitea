@@ -3,7 +3,7 @@ require_relative './utils/macos_codesign.rb'
 class Gitea < Formula
   desc "Git with a cup of tea, painless self-hosted git service"
   homepage "https://gitea.io"
-  version "1.15.6"
+  version "1.15.7"
 
   os = OS.mac? ? "darwin-10.12" : "linux"
   arch = case Hardware::CPU.arch
@@ -25,11 +25,11 @@ class Gitea < Formula
   end
 
   @@sha256 = case "#{os}-#{arch}"
-             when "linux-386" then "b2047a887aa30b0ca432b97dd10085188b2717f91cdb59e24b1494eb4e1d0ecc"   # binary
-             when "linux-amd64" then "0733196e4f8e49548383b890845f08f901b9959afd79e2b3d493b200aa75b109"
-             when "linux-arm64" then "42fb32b7fd3c00cb32fc3c461d2d1cc6f8792f778a3b41de9e23adcb4c1dd1f1" # binary
-             when "darwin-10.12-amd64" then "84e505cc314a14b51c6133980df3e23125e271de9a4c1d5f04c67fc9f870721a"
-             when "darwin-10.12-arm64" then "9bcfc264e7049813267eb1f68ee7291c3bc687d12cbe95bcc9e64258fa97dff5"
+             when "linux-386" then "6cc2fa9412ca6dc985a8d185aaa2d08c5d3156a373ae527c506571c1564a76b5"   # binary
+             when "linux-amd64" then "ec79c71bc33d8712cacfd931d53c966be578c6f7d6aab8ff8a22a30b9cf5e562"
+             when "linux-arm64" then "c30bde918965fc23d7ab51b9ca11df320cf6423096ddfaf2f6c6468cab9ce421" # binary
+             when "darwin-10.12-amd64" then "0313154fd59eab758fe585ddc4496514805e633743631f946d50d7f306305b0b"
+             when "darwin-10.12-arm64" then "f3ccc0591664c263c0f06590d8bcd8e2c7f5ffeac3c14066b062667d7662798e"
              else
                raise "gitea: Unsupported system #{os}-#{arch}"
              end
