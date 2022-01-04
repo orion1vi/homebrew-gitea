@@ -25,11 +25,11 @@ class Gitea < Formula
   end
 
   @@sha256 = case "#{os}-#{arch}"
-             when "linux-386" then "8ba76b03c57f1a099e270523e945855b8f52e1801eb55cea6ac1e5fbf78e32d2"   # binary
-             when "linux-amd64" then "0e8b7235fa480953dfaac31a77a9a0695925f1bfde7b777f5a4d4510474fd8ce"
-             when "linux-arm64" then "52733aa156b5998d76574318623978fbf3daf4142ed0887cfcd618cc9da911e6" # binary
-             when "darwin-10.12-amd64" then "9723b45c5dc6987e12f5212c52a526e1549d9e105425071e84d7c85539b02c44"
-             when "darwin-10.12-arm64" then "5e80c1bb4bed6c84e7264383feb01ef00f1cc4e030aa3e33f3f1d6ab5a1d3794"
+             when "linux-386" then "1eb8a165d34b9ab207f61d39dc73a2b2c176d71ee6ed75f1f02342ca925c0c3a"   # binary
+             when "linux-amd64" then "9159bfc76871ad4bdfd58112711ee0ef8b03359400ba284b09fcd6b595ed5fb8"
+             when "linux-arm64" then "d7f4a39756c6b584a6ffa6425e1e28a7e633f0b0093f20ba3f134dc3ede173fc" # binary
+             when "darwin-10.12-amd64" then "8e91ee37d2a47abe679400bb3655e8831e372986775e55227f59c46a07dd1f1c"
+             when "darwin-10.12-arm64" then "cfa07db7c6b855257efaaee78e1a0e4456622db93b646c7cac44afdbaea978ea"
              else
                raise "gitea: Unsupported system #{os}-#{arch}"
              end
