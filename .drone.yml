@@ -73,3 +73,40 @@ steps:
       - changelog --version
       - brew install gitea/gitea/gitea-head
       - gitea --version
+
+---
+kind: pipeline
+name: update_version
+
+platform:
+  os: linux
+  arch: arm64
+
+trigger:
+  branch:
+    - master
+  event:
+    - cron
+  cron:
+    - update_version
+
+steps:
+  - name: update
+    image: alpine:3.15
+    pull: always
+    commands:
+      - ./bump_version.sh
+
+  - name: push
+    image: appleboy/drone-git-push
+    pull: always
+    settings:
+      author_email: "teabot@gitea.io"
+      author_name: GiteaBot
+      branch: master
+      commit: true
+      commit_message: "[skip ci] Updated Version via cron"
+      remote: "git@gitea.com:gitea/homebnew-gitea.git"
+    environment:
+      GIT_PUSH_SSH_KEY:
+        from_secret: git_push_ssh_key
