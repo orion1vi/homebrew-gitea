@@ -107,7 +107,7 @@ steps:
       branch: master
       commit: true
       commit_message: "[skip ci] Updated Version via cron"
-      remote: "git@gitea.com:gitea/homebnew-gitea.git"
+      remote: "git@gitea.com:gitea/homebrew-gitea.git"
     environment:
       GIT_PUSH_SSH_KEY:
         from_secret: git_push_ssh_key
