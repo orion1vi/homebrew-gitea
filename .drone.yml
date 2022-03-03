@@ -95,6 +95,7 @@ steps:
     image: alpine:3.15
     pull: always
     commands:
+      - apk add --no-cache curl
       - ./bump_version.sh
 
   - name: push
