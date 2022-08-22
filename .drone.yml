@@ -84,7 +84,7 @@ platform:
 
 trigger:
   branch:
-    - master
+    - main
   event:
     - cron
   cron:
@@ -104,7 +104,7 @@ steps:
     settings:
       author_email: "teabot@gitea.io"
       author_name: GiteaBot
-      branch: master
+      branch: main
       commit: true
       commit_message: "[skip ci] Updated Version via cron"
       remote: "git@gitea.com:gitea/homebrew-gitea.git"
