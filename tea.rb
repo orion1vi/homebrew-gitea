@@ -3,7 +3,7 @@ require_relative './utils/macos_codesign.rb'
 class Tea < Formula
   desc "A command line tool to interact with Gitea servers"
   homepage "https://gitea.com/gitea/tea"
-  version "0.8.0"
+  version "0.9.0"
 
   os = OS.mac? ? "darwin" : "linux"
   arch = case Hardware::CPU.arch
@@ -25,11 +25,11 @@ class Tea < Formula
   end
 
   @@sha256 = case "#{os}-#{arch}"
-             when "linux-386" then "c006b38d6cbede7c3932bb762df1a06fa485e6c2af03d736bd3fa304a60376ba"   # binary
-             when "linux-amd64" then "29976cc605f0da406efdc010d4a63ff225f990ebb49efe9f54ecf5c5796e771e"
-             when "linux-arm64" then "f85754008200f4ce3a1de50f77eb72d4960fffd069d19c0655376357a70a5226" # binary
-             when "darwin-amd64" then "8d9aaef2c9e851759a575892d5af8dd2130f0b9c5705189572a282f812126a48"
-             when "darwin-arm64" then "50c14a8bee6df16483eb370dc5491e85db3a0f1a21c8d3790e0b4be0531cf6bd"
+             when "linux-386" then "8e5b0c068b43022c0ec678f4d2b565ba31a514e1821063db9db482ef4fb603c4"   # binary
+             when "linux-amd64" then "6ec8b5eb6a73e30bc1ba976bc7c4f6d74aeceea646ac8e318db262ea31f2ecb7"
+             when "linux-arm64" then "27394b535ad99937b930b28b56735ad9dbe5ec892df5bcb8ea9ea87e5634e151" # binary
+             when "darwin-amd64" then "83aa0f21821278b11d9dd01ae416ebf3f3cb618e6f56a9a3d53ea9d79027d04a"
+             when "darwin-arm64" then "25331254f489dbf47d087e0810daff63638abf178a212e85547ca571803c088e"
              else
                raise "tea: Unsupported system #{os}-#{arch}"
              end
