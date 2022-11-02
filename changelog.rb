@@ -3,7 +3,7 @@ require_relative './utils/macos_codesign.rb'
 class Changelog < Formula
   desc "Generate changelog of gitea repository"
   homepage "https://gitea.com/gitea/changelog"
-  version "master"
+  version "main"
 
   os = OS.mac? ? "darwin-10.12" : "linux"
   arch = case Hardware::CPU.arch
