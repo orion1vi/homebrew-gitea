@@ -80,7 +80,7 @@ name: update_version
 
 platform:
   os: linux
-  arch: arm64
+  arch: amd64
 
 trigger:
   branch:
@@ -92,7 +92,7 @@ trigger:
 
 steps:
   - name: update
-    image: alpine:3.15
+    image: alpine:3.17
     pull: always
     commands:
       - apk add --no-cache curl
