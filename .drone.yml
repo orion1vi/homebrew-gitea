@@ -99,7 +99,7 @@ steps:
       - ./bump_version.sh
 
   - name: push
-    image: appleboy/drone-git-push
+    image: appleboy/drone-git-push:0.2.3-linux-amd64
     pull: always
     settings:
       author_email: "teabot@gitea.io"
