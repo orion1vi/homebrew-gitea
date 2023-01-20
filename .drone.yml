@@ -13,7 +13,7 @@ trigger:
 
 steps:
   - name: test-versioned-formulae
-    image: homebrew/brew:latest
+    image: homebrew/brew:3.6.14
     environment:
       HOMEBREW_NO_AUTO_UPDATE: 1
     commands:
