@@ -15,7 +15,7 @@ class GiteaHead < Formula
          end
 
   @@filename = "gitea-#{version}-#{os}-#{arch}"
-  @@url = "https://dl.gitea.io/gitea/#{version}/#{@@filename}"
+  @@url = "https://dl.gitea.com/gitea/#{version}/#{@@filename}"
   @@using = :nounzip
 
   if os == "darwin-10.12" || arch == "amd64"

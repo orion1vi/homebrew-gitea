@@ -15,7 +15,7 @@ class Tea < Formula
          end
 
   @@filename = "tea-#{version}-#{os}-#{arch}"
-  @@url = "https://dl.gitea.io/tea/#{version}/#{@@filename}"
+  @@url = "https://dl.gitea.com/tea/#{version}/#{@@filename}"
   @@using = :nounzip
 
   if os == "darwin" || arch == "amd64"

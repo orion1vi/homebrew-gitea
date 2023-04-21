@@ -15,7 +15,7 @@ class Changelog < Formula
          end
 
   @@filename = "changelog-#{version}-#{os}-#{arch}"
-  @@url = "https://dl.gitea.io/changelog-tool/#{version}/#{@@filename}"
+  @@url = "https://dl.gitea.com/changelog-tool/#{version}/#{@@filename}"
   @@using = :nounzip
 
   if os == "darwin-10.12" || arch == "amd64"

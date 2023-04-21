@@ -17,7 +17,7 @@ for bin in ${binaries};do
 	latest=$(curl -sL -o /dev/null -w %{url_effective} "${git_url}/releases/latest")
 	version="${latest##*/v}"
 
-	file_url="https://dl.gitea.io/${bin}/${version}"
+	file_url="https://dl.gitea.com/${bin}/${version}"
 	for os in ${supported_os}; do
 		sha256_file="${bin}-${version}-${os}"
 		if [ "$os" != "linux-386" -a "$os" != "linux-arm64" ]; then
