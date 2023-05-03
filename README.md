@@ -26,6 +26,13 @@ brew install tea
 tea -h
 ```
 
+### act_runner
+
+```bash
+brew install act_runner
+act_runner -h
+```
+
 ### changelog
 
 ```bash
@@ -45,7 +52,7 @@ brew tap gitea/tap https://gitea.com/gitea/homebrew-gitea
 Once you updated the tap, you can upgrade via
 
 ```bash
-brew update && brew upgrade gitea tea changelog
+brew update && brew upgrade gitea tea changelog act_runner
 ```
 
 ## Uninstall
@@ -53,7 +60,7 @@ brew update && brew upgrade gitea tea changelog
 You can uninstall Gitea with
 
 ```bash
-brew uninstall gitea tea changelog
+brew uninstall gitea tea changelog act_runner
 ```
 
 Note that this will only uninstall the gitea binary. Your repositories, configuration, database, logs etc. are still kept in their locations (to check which folders Gitea is using, see `Site administration` -> `Configuration`).
@@ -74,6 +81,6 @@ full license text.
 
 ## Copyright
 
-```
+```sh
 Copyright (c) 2016 The Gitea Authors <https://gitea.io>
 ```
