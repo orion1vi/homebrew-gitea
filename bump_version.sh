@@ -23,11 +23,7 @@ for bin in ${binaries};do
 
 	file_url="https://dl.gitea.com/${bin}/${version}"
 	for os in ${supported_os}; do
-		sha256_file="${bin}-${version}-${os}"
-		if [ "$os" != "linux-386" -a "$os" != "linux-arm64" ]; then
-			sha256_file="${sha256_file}.xz"
-		fi
-		sha256_file="${sha256_file}.sha256"
+		sha256_file="${bin}-${version}-${os}.xz.sha256"
 		sha256=$(curl -sL "${file_url}/${sha256_file}" | awk '{print$1}')
 		echo "update ${bin} os: ${os}, sha256: ${sha256}"
 		sed -r "s/^(\s+when \"${os}\" then).*\"(.*)$/\1 \"${sha256}\"\2/" -i "${file}"
