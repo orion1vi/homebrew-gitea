@@ -25,9 +25,9 @@ class Tea < Formula
   end
 
   @@sha256 = case "#{os}-#{arch}"
-             when "linux-386" then "f0d0080db67403bb872a3ff71d77f56f2fc38d95d1e72796e5e85fce4f2a7692"   # binary
+             when "linux-386" then "206e47c04f70e13abd910a4f0c0c5097a463bc8899e83d1041822f04f69c52d9"   # binary
              when "linux-amd64" then "32ed8217e7facc718f45d272d8549ad3d2f82735855cc25bfca525c8f72a4d8d"
-             when "linux-arm64" then "be1aa529ca50dfad520206c21ee9c8b179482c11c4f462ddcfa0101d798fbaea" # binary
+             when "linux-arm64" then "60d18d6c0c2939befde79afd63becc42204acbeafe89dfe46017447882676a35" # binary
              when "darwin-amd64" then "96b5696bc1fa3b65292ac3ac36809e1466df574c3537bd6b0d905ebadeae67bd"
              when "darwin-arm64" then "fb5e295f901837aa6290942bad5cfd7f12fd218fbce8501e0f3f63807faae236"
              else
