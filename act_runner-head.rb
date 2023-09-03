@@ -4,6 +4,7 @@ class ActRunnerHead < Formula
   desc "A runner for Gitea based on act"
   homepage "https://gitea.com/gitea/act_runner"
   version "main"
+  license "MIT"
 
   os = OS.mac? ? "darwin" : "linux"
   arch = case Hardware::CPU.arch

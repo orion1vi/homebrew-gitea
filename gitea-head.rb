@@ -4,6 +4,7 @@ class GiteaHead < Formula
   desc "Git with a cup of tea, painless self-hosted git service"
   homepage "https://gitea.io"
   version "main"
+  license "MIT"
 
   os = OS.mac? ? "darwin-10.12" : "linux"
   arch = case Hardware::CPU.arch

@@ -4,6 +4,7 @@ class Changelog < Formula
   desc "Generate changelog of gitea repository"
   homepage "https://gitea.com/gitea/changelog"
   version "main"
+  license "MIT"
 
   os = OS.mac? ? "darwin-10.12" : "linux"
   arch = case Hardware::CPU.arch
