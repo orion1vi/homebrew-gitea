@@ -8,7 +8,7 @@ jobs:
   test:
     strategy:
       matrix:
-        brew_version: ["3.6.21", "4.0.16", "latest"]
+        brew_version: ["3.6.21", "4.1.7", "latest"]
     runs-on: ubuntu-latest
     container:
       image: homebrew/brew:${{ matrix.brew_version }}
