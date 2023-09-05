@@ -12,9 +12,12 @@ jobs:
       - name: update
         run: ./bump_version.sh
       - name: commit
-        run: |
-          git config --global user.email "teabot@gitea.io"
-          git config --global user.name "GiteaBot"
-          git add --all
-          git commit -m "[skip ci] Updated Version via cron" || true
-          git push origin main
+        uses: https://github.com/appleboy/git-push-action@v0.0.2
+        with:
+          author_email: "teabot@gitea.io"
+          author_name: GiteaBot
+          branch: main
+          commit: true
+          commit_message: "[skip ci] Updated Version via cron"
+          remote: "git@gitea.com:gitea/homebrew-gitea.git"
+          ssh_key: ${{ secrets.DEPLOY_KEY }}
